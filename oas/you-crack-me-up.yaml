@@ -1,0 +1,41 @@
+openapi: 3.0.0
+info:
+  version: 0.1.0
+  title: You Crack Me Up
+servers:
+  - url: https://${HOSTNAME}/users/me/accounts/v1
+paths:
+  /balance:
+    get:
+      summary: get account's balance
+      operationId: get.balance
+      tags:
+        - balance
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: account balance information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/YouCrackMeUp'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    YouCrackMeUp:
+      type: object
+      required:
+        - type
+        - account_id
+      properties:
+        type:
+          type: string
+        account_id:
+          type: string
+        flag:
+          type: string

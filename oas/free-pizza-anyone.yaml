@@ -1,0 +1,70 @@
+openapi: 3.0.0
+info:
+  version: 0.1.0
+  title: Free Pizza Anyone
+servers:
+  - url: https://${HOSTNAME}/pizza/v1
+paths:
+  /orders:
+    put:
+      summary: order pizzas
+      operationId: put.orders
+      tags:
+        - orders
+      requestBody:
+        description: request order
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReqFreePizzaAnyone'
+      responses:
+        '200':
+          description: reservation status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RespFreePizzaAnyone'
+components:
+  schemas:
+    ReqFreePizzaAnyone:
+      type: object
+      required:
+        - id
+        - order_total
+        - payment_status
+      properties:
+        id:
+          type: integer
+        order_total:
+          type: number
+        last_updated:
+          type: integer
+        payment_status:
+          type: string
+        items:
+          type: array
+          items:
+            type: string
+            
+    RespFreePizzaAnyone:
+      type: object
+      required:
+        - id
+        - order_total
+        - payment_status
+      properties:
+        id:
+          type: integer
+        order_total:
+          type: number
+        last_updated:
+          type: integer
+        payment_status:
+          type: string
+        flag:
+          type: string
+        items:
+          type: array
+          items:
+            type: string
