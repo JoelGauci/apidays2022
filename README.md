@@ -35,7 +35,7 @@ export CHALLENGE_KEY=...
 
 curl https://${HOSTNAME}/pizza/v1/orders -X PUT \
 -d '{"id": 5124,"order_total": 42.53,"items": ["vegan-stuffed","pepperoni-deep"],"last_updated": 1643383304,"promo_code": null,"payment_status": "PENDING"}' \
--H "X-Challenge-Key: ${CHALLENGE_KEY}"
+-H "X-Challenge-Key: ${CHALLENGE_KEY}" \
 -H "Content-Type: application/json" -v
 ```
 
